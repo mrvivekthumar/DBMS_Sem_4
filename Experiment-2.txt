@@ -1,0 +1,65 @@
+INSERT INTO SALESMAN (SID , SNAME , CITY , COMM)
+VALUES
+('S101','Ajay Patel', 'Ahmedabad',12.00),
+('S102','Chintan Shah', 'Baroda',15.00),
+('S103','Vinay Mehra', 'Pune',12.00),
+('S104','Jay Pandey', 'Surat',8.00),
+('S105','Jimit Dave', 'Mumbai',3.00),
+('S106','Manan Gandhi', 'Ahmedabad',12.00);
+
+
+INSERT INTO CUSTOMERS (CID , CNAME , CITY , CLASS)
+VALUES
+('C301','Nirav Patel', 'Nadiad','B'),
+('C302','Kiran Dave', 'Delhi','A'),
+('C303','Sapan Shah', 'Bangalore','B'),
+('C304','Saurabh Mehta', 'Baroda','C'),
+('C305','Smriti Mishra', 'Ahmedabad','B'),
+('C306','harshal Pandya', 'Mumbai','A')
+('C307','Sunil Gandhi', 'Baroda','B')
+('C308','Bimal Thakkar', 'Surat','C');
+
+
+INSERT INTO ORDERS (OID , CID , SID , ODATE, O_AMT)
+VALUES
+('O501','C302','S102','02-JAN-22',7000.00),
+('O502','C301','S105','21-JAN-22',100.00),
+('O503','C308','S103','10-FEB-22',2500.00),
+('O504','C306','S104','14-FEB-22',4000.00),
+('O505','C306','S102','29-MAR-22',1000.00),
+('O506','C303','S101','15-APR-22',90000.50),
+('O507','C304','S105','24-JUN-22',7500.75),
+('O508','C306','S101','27-SEP-22',9000.00),
+('O509','C302','S102','21-DEC-22',2050.00),
+('O510','C307','S102','30-DEC-22',278.00),
+('O511','C303','S104','31-DEC-22',150.00);
+
+SELECT * FROM SALESMAN;
+
+
+SELECT * FROM SALESMAN 
+WHERE CITY != 'Baroda';
+
+SELECT CID , CNAME FROM CUSTOMERS 
+WHERE CLASS = 'A';
+
+ALTER TABLE SALESMAN
+ADD COLUMN COUNTRY VARCHAR(15);
+ALTER TABLE CUSTOMERS
+ADD COLUMN COUNTRY VARCHAR(15);
+
+UPDATE CUSTOMERS
+SET CITY = 'Junagadh'
+WHERE CNAME = 'Sunil Gandhi';
+
+SELECT * FROM CUSTOMERS 
+WHERE CITY = 'Surat';
+
+SELECT SNAME FROM SALESMAN
+WHERE SALARY > 2000;
+
+UPDATE ORDERS SET O_AMT = 700.00 WHERE OID = 'O501';
+
+
+SELECT OID , ODATE FROM ORDERS 
+WHERE SID = 'S102';

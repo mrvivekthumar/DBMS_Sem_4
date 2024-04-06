@@ -1,0 +1,33 @@
+-- 1
+SELECT CNAME
+FROM CUSTOMERS
+WHERE
+    CID = (
+        SELECT MAX(CID)
+        FROM CUSTOMERS
+    );
+
+-- 2
+SELECT CNAME
+FROM CUSTOMERS
+WHERE
+    CID = ANY (
+        SELECT CID
+        FROM ORDERS
+        WHERE
+            SID = ANY (
+                SELECT SID
+                FROM SALESMAN
+                WHERE
+                    CITY = 'AHMEDABAD'
+            )
+    );
+
+-- 3
+SELECT *
+FROM ORDERS
+WHERE
+    ODATE = ANY (
+        SELECT MIN(ODATE)
+        FROM ORDERS
+    )
